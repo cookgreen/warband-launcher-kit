@@ -1,0 +1,89 @@
+﻿<Window x:Class="Launcher.ConfigurationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Launcher"
+        mc:Ignorable="d"
+        Title="ConfigurationWindow" Height="336.568" Width="503.255" WindowStyle="None" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" WindowStartupLocation="CenterScreen">
+    <Window.Background>
+        <ImageBrush ImageSource="Images/background.png"></ImageBrush>
+    </Window.Background>
+    <Window.Resources>
+        <Style x:Key="ConfButtonStyle" TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type Button}">
+                        <Grid>
+                            <Label FontSize="27" x:Name="PART_Label" VerticalAlignment="Center" HorizontalAlignment="Center" FontFamily="pack://application:,,,/Fonts/#Mordred" Foreground="Black" Content="{TemplateBinding Content}"></Label>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="PART_Label" Property="Foreground" Value="Yellow"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="PART_Label" Property="Foreground" Value="Yellow"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="ConfCheckBoxStyle" TargetType="{x:Type CheckBox}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type CheckBox}">
+                        <StackPanel Orientation="Horizontal">
+                            <Image Width="21.6" Height="24.8" x:Name="PART_Image" Source="/Launcher;component/Images/checkbox_checked.png" />
+                            <Label FontSize="17" FontFamily="pack://application:,,,/Fonts/#Mordred" Foreground="Black" Content="{TemplateBinding Content}"/>
+                        </StackPanel>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsChecked" Value="False">
+                                <Setter TargetName="PART_Image" Property="Source" Value="/Launcher;component/Images/checkbox_unchecked.png"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="PART_Image" Property="Source" Value="/Launcher;component/Images/checkbox_checked.png"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Label Margin="10,5,0,0" Content="Configure" FontSize="20" FontFamily="pack://application:,,,/Fonts/#Mordred"></Label>
+        <Grid Grid.Row="1" Margin="10,0,10,0">
+            <Label FontSize="17" FontFamily="pack://application:,,,/Fonts/#Mordred" Foreground="Black" Content="Game:"></Label>
+            <CheckBox Name="HideBlood" VerticalAlignment="Top" Margin="20,22,0,0" Height="26" Content="Hide Blood" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <CheckBox Name="EnableCheats" VerticalAlignment="Top" Margin="20,44,0,0" Height="26" Content="Enable Cheats" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <Label VerticalAlignment="Top" Margin="0,66,0,0" FontSize="17" FontFamily="pack://application:,,,/Fonts/#Mordred" Foreground="Black" Content="Audio:"></Label>
+            <CheckBox Name="EnableSoundVariation" VerticalAlignment="Top" Margin="20,88,0,0" Height="26" Content="Enable Sound Variation" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <CheckBox Name="DisableSound" VerticalAlignment="Top" Margin="20,110,0,0" Height="26" Content="Disable Sound" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <CheckBox Name="DisableMusic" VerticalAlignment="Top" Margin="20,132,0,0" Height="26" Content="Disable Music" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <Label VerticalAlignment="Top" Margin="0,154,0,0" FontSize="17" FontFamily="pack://application:,,,/Fonts/#Mordred" Foreground="Black" Content="Advanced:"></Label>
+            <CheckBox Name="EditMode" VerticalAlignment="Top" Margin="20,176,0,0" Height="26" Content="Enable Edit Mode" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <CheckBox Name="SingleThread" VerticalAlignment="Top" Margin="20,198,0,0" Height="26" Content="Force Single Threading" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <Label VerticalAlignment="Top" Margin="205,0,0,0" FontSize="17" FontFamily="pack://application:,,,/Fonts/#Mordred" Foreground="Black" Content="Textures:"></Label>
+            <CheckBox Name="PixelShaders" VerticalAlignment="Top" Margin="225,22,0,0" Height="26" Content="Use Pixel Shaders" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <CheckBox Name="Windowed" VerticalAlignment="Top" Margin="225,44,0,0" Height="26" Content="Start Windowed" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <CheckBox Name="ShowFramerate" VerticalAlignment="Top" Margin="225,66,0,0" Height="26" Content="Show Framerate" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <CheckBox Name="ForceVerticalSync" VerticalAlignment="Top" Margin="225,88,0,0" Height="26" Content="Force Vertical Sync." Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            <CheckBox Name="LoadTexturesOnDemand" VerticalAlignment="Top" Margin="225,110,0,0" Height="26" Content="Load Textures on Demand" Style="{StaticResource ConfCheckBoxStyle}"></CheckBox>
+            
+        </Grid>
+        <Grid Margin="0,0,0,5" Grid.Row="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Button Click="OkButtonClick" Content="OK" Style="{StaticResource ConfButtonStyle}"></Button>
+            <Button Click="CancelButtonClick" Grid.Column="1" Content="Cancel" Style="{StaticResource ConfButtonStyle}"></Button>
+
+        </Grid>
+    </Grid>
+</Window>
