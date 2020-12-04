@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Runtime.InteropServices;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Launcher
@@ -31,7 +34,15 @@ namespace Launcher
 
         private void ConfigureButtonClick(object sender, RoutedEventArgs e)
         {
-            new ConfigurationWindow().Show();
+            string warbandRglTxtFullPath = Path.Combine(Environment.ExpandEnvironmentVariables("%userprofile%"), "Documents", "Mount&Blade Warband", "rgl_config.txt");
+            if (File.Exists(warbandRglTxtFullPath))
+            {
+                new ConfigurationWindow().Show();
+            }
+            else
+            {
+                MessageBox.Show("Could not find config file!");
+            }
         }
     }
 }
