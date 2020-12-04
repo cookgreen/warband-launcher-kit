@@ -8,7 +8,7 @@ namespace Launcher
 {
     public partial class MainWindow
     {
-        private readonly bool WSE = false;
+        private bool WSE = false;
 
         public MainWindow()
         {
@@ -22,6 +22,7 @@ namespace Launcher
 
         private void PlayButtonClick(object sender, RoutedEventArgs e)
         {
+            WSE = chkUseWSE.IsChecked.Value;
             var loader = WSE ? new WseLoader() : (ILoader)new WarbandLoader();
             loader.LoadGame();
             Close();

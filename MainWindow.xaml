@@ -49,7 +49,19 @@
                 <Button Click="CancelButtonClick" Style="{StaticResource LauncherButtonStyle}" Content="Cancel"></Button>
             </StackPanel>
             <Grid Grid.Column="1">
-                <Image Margin="5" Source="Images/mod_image.png"></Image>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30"></RowDefinition>
+                    <RowDefinition Height="*"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                        <ColumnDefinition Width="80"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <ComboBox x:Name="cmbModules" Margin="6,6,6,6"></ComboBox>
+                    <CheckBox x:Name="chkUseWSE" Margin="6,6,6,6" Content="WSE" FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" />
+                </Grid>
+                <Image Margin="5" Source="Images/mod_image.png" Grid.Row="1"></Image>
             </Grid>
         </Grid>
     </Grid>
